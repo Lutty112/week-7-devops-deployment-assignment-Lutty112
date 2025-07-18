@@ -35,7 +35,7 @@ export default function PostList({ posts }) {
             {/* RIGHT: Image */}
             {post.image && (
                <img
-                src={`https://week-7-devops-deployment-assignment-stci.onrender.com${post.image}`}
+                src={`https://week-7-devops-deployment-assignment-stci.onrender.com/api${post.image}`}
                 alt={post.title}
                 className="w-full max-w-sm rounded-lg object-cover"
                />
