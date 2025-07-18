@@ -18,6 +18,8 @@ connectDB();
 
 // Allow only frontend on Vercel to connect
 const allowedOrigins = [
+  'https://week-7-devops-deployment-assignment-lilac.vercel.app',
+  'https://week-7-devops-deployment-assignment-stci.onrender.com',
   'http://localhost:5173',
   ];
 
