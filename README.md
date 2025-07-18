@@ -1,78 +1,134 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=19941971&assignment_repo_type=AssignmentRepo)
-# Deployment and DevOps for MERN Applications
+# 🍲 MERN RecipeSharing Application
 
-This assignment focuses on deploying a full MERN stack application to production, implementing CI/CD pipelines, and setting up monitoring for your application.
+A full-stack MERN (MongoDB, Express, React, Node.js) application that allows users to register, log in, and interact with blog-style recipes. Users can create, update, delete, and view recipes with categories and images.
 
-## Assignment Overview
+---
 
-You will:
-1. Prepare your MERN application for production deployment
-2. Deploy the backend to a cloud platform
-3. Deploy the frontend to a static hosting service
-4. Set up CI/CD pipelines with GitHub Actions
-5. Implement monitoring and maintenance strategies
+## 📁 Project Structure
 
-## Getting Started
+week-4-mern-integration-assignment-Lutty112/
+├── client/ # React frontend
+├── server/ # Express backend
+│ ├── models/
+│ ├── routes/
+│ ├── controllers/
+│ ├── config/
+│ └── server.js
+├── uploads/ # Uploaded images
+└── README.md
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Follow the setup instructions in the `Week7-Assignment.md` file
-4. Use the provided templates and configuration files as a starting point
+---
 
-## Files Included
+## 🚀 Deployment Instructions
 
-- `Week7-Assignment.md`: Detailed assignment instructions
-- `.github/workflows/`: GitHub Actions workflow templates
-- `deployment/`: Deployment configuration files and scripts
-- `.env.example`: Example environment variable templates
-- `monitoring/`: Monitoring configuration examples
+### 🛠 Prerequisites
 
-## Requirements
+- Node.js (v18+)
+- MongoDB Atlas 
+- Hosting accounts:
+  - Backend: [Render](https://render.com) 
+  - Frontend: [Vercel](https://vercel.com)
 
-- A completed MERN stack application from previous weeks
-- Accounts on the following services:
-  - GitHub
-  - MongoDB Atlas
-  - Render, Railway, or Heroku (for backend)
-  - Vercel, Netlify, or GitHub Pages (for frontend)
-- Basic understanding of CI/CD concepts
+---
 
-## Deployment Platforms
+### 📦 Backend Deployment (Express API)
 
-### Backend Deployment Options
-- **Render**: Easy to use, free tier available
-- **Railway**: Developer-friendly, generous free tier
-- **Heroku**: Well-established, extensive documentation
+1. **Push your backend code to GitHub**
 
-### Frontend Deployment Options
-- **Vercel**: Optimized for React apps, easy integration
-- **Netlify**: Great for static sites, good CI/CD
-- **GitHub Pages**: Free, integrated with GitHub
+2. **Deploy on Render**
+   - Log in to [Render](https://render.com)
+   - Create a new Web Service
+   - Connect your GitHub repo
+   - Set **Build Command**: `pnpm install`
+   - Set **Start Command**: `pnpm start`
+   - Set Environment Variables:
+     - `MONGODB_URI` = mongodb+srv://lutfikhatib112:VnPO3JBpm8SqDfRK@cluster0.ys9ooiz.mongodb.net/RecipeSharingApp?retryWrites=true&w=majority&appName=Cluster0
+     - `JWT_SECRET` = your secret key
+     - `PORT` = 5000
+   - Click **Deploy**
 
-## CI/CD Pipeline
+3. **Ensure uploads work**
+   - Add this line in `server.js`:
+     ```js
+     app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
+     ```
 
-The assignment includes templates for setting up GitHub Actions workflows:
-- `frontend-ci.yml`: Tests and builds the React application
-- `backend-ci.yml`: Tests the Express.js backend
-- `frontend-cd.yml`: Deploys the frontend to your chosen platform
-- `backend-cd.yml`: Deploys the backend to your chosen platform
+---
 
-## Submission
+### 🌐 Frontend Deployment (React App)
 
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
+1. **Build the React app**
+   ```bash
+   cd client
+   pnpm run build
 
-1. Complete all deployment tasks
-2. Set up CI/CD pipelines with GitHub Actions
-3. Deploy both frontend and backend to production
-4. Document your deployment process in the README.md
-5. Include screenshots of your CI/CD pipeline in action
-6. Add URLs to your deployed applications
+2. **Deploy on Vercel**
+   - connect GitHub repo and set:
+   - **Build command**: pnpm run build
+   - **Publish directory**: dist 
 
-## Resources
+3. **Set Environment Variable**
 
-- [GitHub Actions Documentation](https://docs.github.com/en/actions)
-- [MongoDB Atlas Documentation](https://docs.atlas.mongodb.com/)
-- [Render Documentation](https://render.com/docs)
-- [Railway Documentation](https://docs.railway.app/)
-- [Vercel Documentation](https://vercel.com/docs)
-- [Netlify Documentation](https://docs.netlify.com/) 
+On Vercel, go to Site Settings → Environment Variables:
+
+     - `VITE_API_URL`=https://week-4-mern-integration-assignment-bfk9.onrender.com/api
+
+4. **Fix React Router routes**
+
+Add a _redirects file inside dist/:
+ ```bash
+/*    /index.html   200
+
+### 🔁 Rollback Steps
+
+**Backend (Render)**
+
+* - Go to your service dashboard on Render
+* - Open the "Deploys" tab
+* - Select a previously successful deployment
+* - Click Rollback
+
+**Frontend (Vercel)**
+
+* - Go to your Vercel dashboard → Site → Deploys
+* - Find the previously working deploy
+* - Click Publish Deploy
+
+## 🧰 Tech Stack
+
+* MongoDB + Mongoose
+* Express.js
+* React + Vite
+* Node.js
+* JSON Web Tokens (JWT)
+* Multer (for image upload)
+* Helmet + Morgan (security + logging)
+
+
+## 📄 Features
+
+* 🔐 User registration & login
+* 📝 Create, edit, delete, and view recipes
+* 🗂 Category filtering
+* 📁 Image uploads (Multer)
+* 🌍 RESTful API integration
+* ✅ Protected Routes (JWT)
+* 🧠 Error handling middleware
+* 🌐 Deployment-ready setup
+
+## 🧪 Possible Improvements
+
+* Add Comments System
+* User Profile Pages
+* Search & Filter Enhancements
+* Pagination
+* Like/Bookmark Recipes
+
+## 👤 Author
+
+* Lutty112 — GitHub Profile
+* Project submitted for Power Learn Project MERN Stack Track
+
+## 📄 License
+
+* This project is for educational use only under the Power Learn Project program.
