@@ -6,15 +6,32 @@ A full-stack MERN (MongoDB, Express, React, Node.js) application that allows use
 
 ## 📁 Project Structure
 
-week-4-mern-integration-assignment-Lutty112/
-├── client/ # React frontend
-├── server/ # Express backend
-│ ├── models/
-│ ├── routes/
-│ ├── controllers/
-│ ├── config/
-│ └── server.js
-├── uploads/ # Uploaded images
+recipe-sharing-app/
+├── client/                     # React frontend
+│   ├── public/
+│   ├── src/
+│   │   ├── components/         # Reusable components (Navbar, PostItem, etc.)
+│   │   ├── context/            # AuthContext for user session management
+│   │   ├── hooks/              # Custom React hooks
+│   │   ├── pages/              # Pages like Home, Login, Register, Dashboard
+│   │   ├── services/           # Axios instance + API functions
+│   │   ├── utils/              # ProtectedRoute and helpers
+│   │   └── App.jsx             # Main component with routes
+│   └── package.json
+│   └── vite.config.js
+│
+├── server/                     # Node.js backend
+│   ├── config/                 # MongoDB config
+    ├─  Controllers/            # Route logic (Post, Auth, Category, etc.)
+│   ├── middleware/             # Auth, validateRequest, file upload
+│   ├── models/                 # Mongoose schemas (User, Post, Category)
+│   ├── routes/                 # Express routers
+│   ├── uploads/                # Uploaded images
+│   ├── server.js               # Main Express entry file 
+│   ├─  package.json               
+│   └── .env                    # Environment variables
+├── screenshots                 # Screenshots of the application                        
+├── .gitignore
 └── README.md
 
 ---
