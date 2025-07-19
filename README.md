@@ -124,6 +124,53 @@ Add a _redirects file inside dist/:
 * Pagination
 * Like/Bookmark Recipes
 
+## 📦 Deployment & Maintenance Summary
+
+### 🚀 Deployment Steps
+
+- **Frontend Deployment**: Vercel  
+  - Connected via GitHub repo
+  - Auto-deploys on push to `main` branch
+- **Backend Deployment**: Render  
+  - Connected via GitHub
+  - Configured `build` and `start` commands
+  - Environment variables securely stored on Render
+
+### 🔄 Rollback Strategy
+
+- **Vercel**:  
+  - Easily rollback by selecting a previous deployment on the dashboard
+- **Render**:  
+  - Re-deploy a previous successful commit manually via the dashboard
+- **GitHub**:  
+  - Use Git history to revert to previous working code if needed
+
+### 📊 Monitoring Tools
+
+- **UptimeRobot**:  
+  - Monitors:
+    - Frontend: `https://week-7-devops-deployment-assignment-lilac.vercel.app/`
+    - Backend Health: `https://week-7-devops-deployment-assignment-stci.onrender.com/api/health`
+  - Sends email alerts if downtime occurs
+- **Sentry**:
+  - Error tracking set up for both frontend and backend
+  - Helps detect and fix runtime issues
+- **Health Check**:  
+  - Backend `/api/health` route responds with status and uptime
+
+### 🛠️ Maintenance Plan
+
+- **Regular Updates**:
+  - Keep dependencies up-to-date using `npm outdated` or `pnpm update`
+- **Security Patches**:
+  - Monitor for critical vulnerabilities using GitHub security alerts
+- **Database Backups**:
+  - Export MongoDB regularly (use MongoDB Atlas or CLI backup tools)
+- **Scheduled Checks**:
+  - Weekly review of Sentry logs and uptime reports
+  - Monthly review of deployment configurations and server usage
+
+
 ## 👤 Author
 
 * Lutty112 — GitHub Profile
