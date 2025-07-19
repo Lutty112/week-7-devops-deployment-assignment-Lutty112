@@ -7,6 +7,7 @@ const authRoutes = require('./routes/authRoutes');
 const postRoutes = require('./routes/postRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const errorHandler = require('./middleware/errorHandler');
+const healthRoutes = require('./routes/healthRoutes')
 const helmet = require('helmet');
 const morgan = require('morgan');
 const path = require('path');
@@ -41,6 +42,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/posts", require("./routes/postRoutes"));
 app.use("/api/categories", require("./routes/categoryRoutes"));
+app.use('/api', require('./routes/healthRoutes'));
 
 // Error handling middleware
 app.use(errorHandler);
